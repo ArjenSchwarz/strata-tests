@@ -1,0 +1,29 @@
+name: Terraform Plan
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  terraform-plan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: latest
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Plan
+      run: terraform plan -out=plan.out
+
+    - name: Parse Terraform Plan
+      uses: arjenschwarz/strata@v0.9.0
+      with:
+        plan-file: plan.out
