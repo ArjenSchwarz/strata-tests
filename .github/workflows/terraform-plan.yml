@@ -30,4 +30,4 @@ jobs:
     - name: Parse Terraform Plan
       uses: arjenschwarz/strata@v0.10.3
       with:
-        plan-file: tf.plan
+        plan-file: ./tf.plan
