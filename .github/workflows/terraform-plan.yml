@@ -28,8 +28,6 @@ jobs:
       run: terraform plan -out=tf.plan
 
     - name: Parse Terraform Plan
-      uses: arjenschwarz/strata@v0.10.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: arjenschwarz/strata@v0.10.1
       with:
         plan-file: tf.plan
