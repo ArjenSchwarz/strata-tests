@@ -24,6 +24,6 @@ jobs:
       run: terraform plan -out=plan.out
 
     - name: Parse Terraform Plan
-      uses: arjenschwarz/strata@v0.9.0
+      uses: arjenschwarz/strata@v0.10.0
       with:
         plan-file: plan.out
