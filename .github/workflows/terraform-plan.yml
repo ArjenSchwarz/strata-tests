@@ -32,3 +32,34 @@ jobs:
       with:
         plan-file: tf.plan
         show-details: true
+
+  sample-plans:
+    runs-on: ubuntu-latest
+    needs: terraform-plan
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: latest
+
+    - name: Parse Sample Danger Plan
+      uses: arjenschwarz/strata@v0.11.5
+      with:
+        plan-file: samples/danger-sample.json
+        show-details: true
+
+    - name: Parse k8s Plan
+      uses: arjenschwarz/strata@v0.11.5
+      with:
+        plan-file: samples/k8s-sample.json
+        show-details: true
+
+    - name: Parse Web Plan
+      uses: arjenschwarz/strata@v0.11.5
+      with:
+        plan-file: samples/web-sample.json
+        show-details: true
