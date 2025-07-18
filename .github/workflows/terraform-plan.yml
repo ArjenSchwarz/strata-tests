@@ -31,3 +31,4 @@ jobs:
       uses: arjenschwarz/strata@v0.11.1
       with:
         plan-file: tf.plan
+        show-details: true
