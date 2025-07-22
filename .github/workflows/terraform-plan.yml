@@ -28,7 +28,7 @@ jobs:
       run: terraform plan -out=tf.plan
 
     - name: Parse Terraform Plan
-      uses: arjenschwarz/strata@v0.12.0
+      uses: arjenschwarz/strata@v0.12.3
       with:
         plan-file: tf.plan
         show-details: true
@@ -51,7 +51,7 @@ jobs:
         terraform_version: latest
 
     - name: Parse Sample Danger Plan
-      uses: arjenschwarz/strata@v0.12.0
+      uses: arjenschwarz/strata@v0.12.3
       with:
         plan-file: samples/danger-sample.json
         show-details: true
@@ -73,7 +73,7 @@ jobs:
       with:
         terraform_version: latest
     - name: Parse k8s Plan
-      uses: arjenschwarz/strata@v0.12.0
+      uses: arjenschwarz/strata@v0.12.3
       with:
         plan-file: samples/k8s-sample.json
         show-details: true
@@ -96,7 +96,7 @@ jobs:
       with:
         terraform_version: latest
     - name: Parse Web Plan
-      uses: arjenschwarz/strata@v0.12.2
+      uses: arjenschwarz/strata@v0.12.3
       with:
         plan-file: samples/web-sample.json
         show-details: true
