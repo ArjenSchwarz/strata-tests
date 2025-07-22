@@ -96,7 +96,7 @@ jobs:
       with:
         terraform_version: latest
     - name: Parse Web Plan
-      uses: arjenschwarz/strata@v0.12.0
+      uses: arjenschwarz/strata@v0.12.2
       with:
         plan-file: samples/web-sample.json
         show-details: true
