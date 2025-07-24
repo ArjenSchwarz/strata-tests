@@ -53,6 +53,7 @@ jobs:
       uses: arjenschwarz/strata@v0.13.0
       with:
         plan-file: samples/danger-sample.json
+        comment-header: "Danger Plan"
 
   sample-k8s-plan:
     permissions:
@@ -74,6 +75,7 @@ jobs:
       uses: arjenschwarz/strata@v0.13.0
       with:
         plan-file: samples/k8s-sample.json
+        comment-header: "K8s Plan"
 
 
   sample-web-plan:
@@ -96,6 +98,7 @@ jobs:
       uses: arjenschwarz/strata@v0.13.0
       with:
         plan-file: samples/web-sample.json
+        comment-header: "Web Plan"
 
 
   sample-noop-plan:
@@ -118,3 +121,4 @@ jobs:
       uses: arjenschwarz/strata@v0.13.0
       with:
         plan-file: samples/nochange-sample.json
+        comment-header: "No-Op Plan"
