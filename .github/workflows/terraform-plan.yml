@@ -28,7 +28,7 @@ jobs:
       run: terraform plan -out=tf.plan
 
     - name: Parse Terraform Plan
-      uses: arjenschwarz/strata@e12777741f8f7e6bd04265f1df513df1ea040b33
+      uses: arjenschwarz/strata@6edb143c715a8acb5100fe89f77c6f5a6d099207
       with:
         plan-file: tf.plan
 
@@ -50,7 +50,7 @@ jobs:
         terraform_version: latest
 
     - name: Parse Sample Danger Plan
-      uses: arjenschwarz/strata@e12777741f8f7e6bd04265f1df513df1ea040b33
+      uses: arjenschwarz/strata@6edb143c715a8acb5100fe89f77c6f5a6d099207
       with:
         plan-file: samples/danger-sample.json
         comment-header: "Danger Plan"
@@ -72,7 +72,7 @@ jobs:
       with:
         terraform_version: latest
     - name: Parse k8s Plan
-      uses: arjenschwarz/strata@e12777741f8f7e6bd04265f1df513df1ea040b33
+      uses: arjenschwarz/strata@6edb143c715a8acb5100fe89f77c6f5a6d099207
       with:
         plan-file: samples/k8s-sample.json
         comment-header: "K8s Plan"
@@ -95,7 +95,7 @@ jobs:
       with:
         terraform_version: latest
     - name: Parse Web Plan
-      uses: arjenschwarz/strata@e12777741f8f7e6bd04265f1df513df1ea040b33
+      uses: arjenschwarz/strata@6edb143c715a8acb5100fe89f77c6f5a6d099207
       with:
         plan-file: samples/web-sample.json
         comment-header: "Web Plan"
@@ -118,7 +118,7 @@ jobs:
       with:
         terraform_version: latest
     - name: Parse No-Op Plan
-      uses: arjenschwarz/strata@e12777741f8f7e6bd04265f1df513df1ea040b33
+      uses: arjenschwarz/strata@6edb143c715a8acb5100fe89f77c6f5a6d099207
       with:
         plan-file: samples/nochange-sample.json
         comment-header: "No-Op Plan"
@@ -140,7 +140,7 @@ jobs:
       with:
         terraform_version: latest
     - name: Parse No-Op Plan
-      uses: arjenschwarz/strata@e12777741f8f7e6bd04265f1df513df1ea040b33
+      uses: arjenschwarz/strata@6edb143c715a8acb5100fe89f77c6f5a6d099207
       with:
         plan-file: samples/wildcards-sample.json
         comment-header: "Wildcards Plan"
@@ -167,6 +167,6 @@ jobs:
       run: cd subdirtest && terraform plan -out=tf.plan
 
     - name: Parse Terraform Plan
-      uses: arjenschwarz/strata@e12777741f8f7e6bd04265f1df513df1ea040b33
+      uses: arjenschwarz/strata@6edb143c715a8acb5100fe89f77c6f5a6d099207
       with:
         plan-file: subdirtest/tf.plan
