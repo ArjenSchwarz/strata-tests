@@ -28,10 +28,9 @@ jobs:
       run: terraform plan -out=tf.plan
 
     - name: Parse Terraform Plan
-      uses: arjenschwarz/strata@v0.12.3
+      uses: arjenschwarz/strata@bb9a43a7ef45cb9908929e9e1d433a071d6af009
       with:
         plan-file: tf.plan
-        show-details: true
 
   sample-danger-plan:
     permissions:
@@ -51,10 +50,10 @@ jobs:
         terraform_version: latest
 
     - name: Parse Sample Danger Plan
-      uses: arjenschwarz/strata@v0.12.3
+      uses: arjenschwarz/strata@bb9a43a7ef45cb9908929e9e1d433a071d6af009
       with:
         plan-file: samples/danger-sample.json
-        show-details: true
+        comment-header: "Danger Plan"
 
   sample-k8s-plan:
     permissions:
@@ -73,10 +72,10 @@ jobs:
       with:
         terraform_version: latest
     - name: Parse k8s Plan
-      uses: arjenschwarz/strata@v0.12.3
+      uses: arjenschwarz/strata@bb9a43a7ef45cb9908929e9e1d433a071d6af009
       with:
         plan-file: samples/k8s-sample.json
-        show-details: true
+        comment-header: "K8s Plan"
 
 
   sample-web-plan:
@@ -96,7 +95,78 @@ jobs:
       with:
         terraform_version: latest
     - name: Parse Web Plan
-      uses: arjenschwarz/strata@v0.12.3
+      uses: arjenschwarz/strata@bb9a43a7ef45cb9908929e9e1d433a071d6af009
       with:
         plan-file: samples/web-sample.json
-        show-details: true
+        comment-header: "Web Plan"
+
+
+  sample-noop-plan:
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    runs-on: ubuntu-latest
+    needs: terraform-plan
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: latest
+    - name: Parse No-Op Plan
+      uses: arjenschwarz/strata@bb9a43a7ef45cb9908929e9e1d433a071d6af009
+      with:
+        plan-file: samples/nochange-sample.json
+        comment-header: "No-Op Plan"
+
+  wildcards-plan:
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    runs-on: ubuntu-latest
+    needs: terraform-plan
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: latest
+    - name: Parse No-Op Plan
+      uses: arjenschwarz/strata@bb9a43a7ef45cb9908929e9e1d433a071d6af009
+      with:
+        plan-file: samples/wildcards-sample.json
+        comment-header: "Wildcards Plan"
+
+  subdir-plan:
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: latest
+    - name: Subdir Terraform Init
+      run: cd subdirtest && terraform init
+
+    - name: Terraform Plan
+      run: cd subdirtest && terraform plan -out=tf.plan
+
+    - name: Parse Terraform Plan
+      uses: arjenschwarz/strata@bb9a43a7ef45cb9908929e9e1d433a071d6af009
+      with:
+        plan-file: subdirtest/tf.plan
